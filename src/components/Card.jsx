@@ -24,8 +24,18 @@ export default function Card() {
     }, [])
 
     return (
-        <div className="card">
-            {char && char[0] && char[0].name}
-        </div>
+        <>
+            <div className="card">
+                <p>{char && char[0] && char[0].name}</p>
+            </div>
+            <div className="card">
+                <p>{char && char[1] && char[1].name}</p>
+            </div>
+            <div className="card">
+                <p>{char && char[2] && char[2].name}</p>
+            </div>
+        </>
+
+        
     )
 }
