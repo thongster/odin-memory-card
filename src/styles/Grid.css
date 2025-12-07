@@ -3,4 +3,5 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 300px;
     border: 1px solid lightblue;
+    grid-area: 3rem;
 }
