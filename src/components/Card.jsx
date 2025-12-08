@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import "../styles/Card.css"
 
 export default function Card() {
-    const [char, setChar] = useState(null);
+    const [charList, setCharList] = useState(null);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -12,7 +12,7 @@ export default function Card() {
             try {
                 const response = await fetch('https://dragonball-api.com/api/characters/', {signal})
                 const data = await response.json()
-                setChar(data.items)
+                setCharList(data.items)
                 console.log(data.items)
             } catch {
                 console.log("error")
@@ -20,19 +20,20 @@ export default function Card() {
         }
         fetchData()
 
-        return () => {controller.abort()}
+        // return () => {controller.abort()}
     }, [])
 
     return (
         <>
+            {char}
             <div className="card">
-                <p>{char && char[0] && char[0].name}</p>
+                <p>{char && charList[0] && charList[0].name}</p>
             </div>
             <div className="card">
-                <p>{char && char[1] && char[1].name}</p>
+                <p>{char && charList[1] && charList[1].name}</p>
             </div>
             <div className="card">
-                <p>{char && char[2] && char[2].name}</p>
+                <p>{char && charList[2] && charList[2].name}</p>
             </div>
         </>
 
