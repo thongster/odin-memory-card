@@ -7,6 +7,7 @@ import './styles/App.css'
 function App() {
   const [currentScore, setCurrentScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
+  const [selectedChars, setSelectedChars] = useState([])
 
   return (
     <div className="container">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/Card.css'
 
-export default function Card({setCurrentScore, setHighScore}) {
+export default function Card({ setCurrentScore, setHighScore }) {
   const [charList, setCharList] = useState([])
 
   useEffect(() => {
