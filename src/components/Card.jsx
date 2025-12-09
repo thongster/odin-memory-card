@@ -1,42 +1,41 @@
 import { useState, useEffect } from 'react'
-import "../styles/Card.css"
+import '../styles/Card.css'
 
 export default function Card() {
-    const [charList, setCharList] = useState(null);
+  const [charList, setCharList] = useState([])
 
-    useEffect(() => {
-        const controller = new AbortController();
-        const signal = controller.signal
+  useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
 
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://dragonball-api.com/api/characters/', {signal})
-                const data = await response.json()
-                setCharList(data.items)
-                console.log(data.items)
-            } catch {
-                console.log("error")
-            }
-        }
-        fetchData()
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://dragonball-api.com/api/characters/',
+          { signal }
+        )
+        const data = await response.json()
+        setCharList(data.items)
+        console.log(data.items)
+      } catch {
+        console.log('error')
+      }
+    }
+    fetchData()
 
-        // return () => {controller.abort()}
-    }, [])
+    // return () => {controller.abort()}
+  }, [])
 
-    return (
-        <>
-            {char}
-            <div className="card">
-                <p>{char && charList[0] && charList[0].name}</p>
-            </div>
-            <div className="card">
-                <p>{char && charList[1] && charList[1].name}</p>
-            </div>
-            <div className="card">
-                <p>{char && charList[2] && charList[2].name}</p>
-            </div>
-        </>
-
-        
-    )
+  return (
+    <>
+      {charList.map((char) => (
+        <div key={char.id} className="card">
+          <img src={char.image} alt=""/>
+          <p>{char.name}</p>
+          <p>Race: {char.race}</p>
+          <p>Power Level: {char.ki}</p>
+        </div>
+      ))}
+    </>
+  )
 }
