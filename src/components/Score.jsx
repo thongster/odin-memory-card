@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import '../styles/Score.css'
 
-export default function Score() {
-  const [currentScore, setCurrentScore] = useState(0)
-  const [highScore, setHighScore] = useState(0)
-
+export default function Score({currentScore, highScore}) {
+  
   return (
     <div className="score">
       <p>Current Score: {currentScore}</p>

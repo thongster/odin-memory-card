@@ -5,10 +5,13 @@ import './styles/modern-normalize.css'
 import './styles/App.css'
 
 function App() {
+  const [currentScore, setCurrentScore] = useState(0)
+  const [highScore, setHighScore] = useState(0)
+
   return (
     <div className="container">
-      <Score />
-      <Grid />
+      <Score currentScore={currentScore} highScore={highScore} />
+      <Grid setCurrentScore={setCurrentScore} setHighScore={setHighScore} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/Card.css'
 
-export default function Card() {
+export default function Card({setCurrentScore, setHighScore}) {
   const [charList, setCharList] = useState([])
 
   useEffect(() => {
@@ -26,12 +26,16 @@ export default function Card() {
     // return () => {controller.abort()}
   }, [])
 
+  function handleClick() {
+    setCurrentScore((prev) => prev + 1)
+  }
+
   return (
     <>
       {charList.map((char) => (
-        <div key={char.id} className="card">
-          <img src={char.image} alt=""/>
-          <div className='cardText'>
+        <div key={char.id} className="card" onClick={handleClick}>
+          <img src={char.image} alt="" />
+          <div className="cardText">
             <h2>{char.name}</h2>
             <p>Race: {char.race}</p>
             <p>Ki: {char.ki}</p>
