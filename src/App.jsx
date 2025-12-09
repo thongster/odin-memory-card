@@ -11,8 +11,9 @@ function App() {
 
   return (
     <div className="container">
+      <p>{selectedChars}</p>
       <Score currentScore={currentScore} highScore={highScore} />
-      <Grid setCurrentScore={setCurrentScore} setHighScore={setHighScore} />
+      <Grid setCurrentScore={setCurrentScore} setHighScore={setHighScore} setSelectedChars={setSelectedChars} />
     </div>
   )
 }
