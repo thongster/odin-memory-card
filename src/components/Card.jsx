@@ -31,9 +31,11 @@ export default function Card() {
       {charList.map((char) => (
         <div key={char.id} className="card">
           <img src={char.image} alt=""/>
-          <p>{char.name}</p>
-          <p>Race: {char.race}</p>
-          <p>Power Level: {char.ki}</p>
+          <div className='cardText'>
+            <h2>{char.name}</h2>
+            <p>Race: {char.race}</p>
+            <p>Ki: {char.ki}</p>
+          </div>
         </div>
       ))}
     </>
