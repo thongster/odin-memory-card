@@ -27,7 +27,7 @@ export default function Card({ setCurrentScore, setHighScore, setSelectedChars }
   }, [])
 
   function handleClick(char) {
-    setSelectedChars((prev) => prev.push(char.id))
+    setSelectedChars((prev) => [...prev, char.id])
     setCurrentScore((prev) => prev + 1)
 
   }
@@ -35,7 +35,7 @@ export default function Card({ setCurrentScore, setHighScore, setSelectedChars }
   return (
     <>
       {charList.map((char) => (
-        <div key={char.id} className="card" onClick={(char) => handleClick(char)}>
+        <div key={char.id} className="card" onClick={() => handleClick(char)}>
           <img src={char.image} alt="" />
           <div className="cardText">
             <h2>{char.name}</h2>
