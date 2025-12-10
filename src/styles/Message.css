@@ -1,13 +1,12 @@
 .message {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: auto;
     padding: 1rem 1.5rem;
-    background: #f7f7f7;
-    border-radius: 8px;
-    background: rgba(255, 203, 40, 0.15);
+    background: rgba(255, 233, 160, 0.35);
+    border-radius: 10px;
     border: 2px solid #f0b429;
-
+    box-shadow: 0 0 10px rgba(255, 190, 40, 0.6);
     max-width: 600px;
 }
