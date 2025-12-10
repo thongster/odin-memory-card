@@ -73,8 +73,8 @@ function App() {
           <span key={id}>{id}, </span>
         ))}
       </p>
-      <Message message={message} />
       <Score currentScore={currentScore} highScore={highScore} />
+      <Message message={message} />
       <Grid handleCardClick={handleCardClick} charList={charList} />
     </div>
   )
