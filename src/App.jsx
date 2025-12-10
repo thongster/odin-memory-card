@@ -29,18 +29,30 @@ function App() {
       }
     }
     fetchData()
-
-    // return () => {controller.abort()}
+    // return () => controller.abort()
   }, [])
 
-  function shuffleCards(charList) {
-    for (let i = charList.length - 1; i > 0; i--) {
-      // Generate a random index from 0 to i
-      const j = Math.floor(Math.random() * (i + 1))
-
-      // Swap elements array[i] and array[j]
-      ;[charList[i], charList[j]] = [charList[j], charList[i]]
+  useEffect(() => {
+    if (charList.length > 0) {
+      shuffleCards()
     }
+  }, [])
+
+  function shuffleCards() {
+    setCharList((prev) => {
+      const shuffled = [...prev]
+
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements array[i] and array[j]
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+
+      return shuffled
+    })
+
   }
 
   function gameOver() {

@@ -21,6 +21,8 @@
         0 0 40px rgba(255, 100, 0, 0.4);
 
     border-color: #f0a029;
+    background: linear-gradient(180deg, #fff8e1 0%, #ffe48a 100%);
+
 }
 
 .card img {
