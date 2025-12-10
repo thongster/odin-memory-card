@@ -12,6 +12,15 @@ function App() {
   const [charList, setCharList] = useState([])
   const [gameState, setGameState] = useState('Start') // "Start", "InGame", "GameOver"
 
+  function shuffleList(list) {
+    const arr = [...list]
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+    return arr
+  }
+
   useEffect(() => {
     const controller = new AbortController()
     const signal = controller.signal
@@ -33,35 +42,8 @@ function App() {
     // return () => controller.abort()
   }, [])
 
-  // function shuffleCards() {
-  //   setCharList((prev) => {
-  //     const shuffled = [...prev]
-
-  //     for (let i = shuffled.length - 1; i > 0; i--) {
-  //       // Generate a random index from 0 to i
-  //       const j = Math.floor(Math.random() * (i + 1));
-
-  //       // Swap elements array[i] and array[j]
-  //       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  //     }
-
-  //     return shuffled
-  //   })
-  // }
-
-  function shuffleList(list) {
-    const arr = [...list]
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[arr[i], arr[j]] = [arr[j], arr[i]]
-    }
-    return arr
-  }
-
   function shuffleCards() {
-    setCharList((prev) => (
-      shuffleList(prev)
-    ))
+    setCharList((prev) => shuffleList(prev))
   }
 
   function gameOver() {

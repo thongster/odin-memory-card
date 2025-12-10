@@ -1,7 +1,6 @@
 import '../styles/Card.css'
 
 export default function Card({ handleCardClick, char }) {
-
   return (
     <>
       <div className="card" onClick={() => handleCardClick(char)}>
