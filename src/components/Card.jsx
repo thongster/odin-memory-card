@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import '../styles/Card.css'
 
 export default function Card({ handleCardClick, charList }) {

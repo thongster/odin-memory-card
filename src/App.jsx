@@ -66,15 +66,8 @@ function App() {
     }
   }
 
-  shuffleCards(charList) // initial shuffle
-
   return (
     <div className="container">
-      <p>
-        {selectedChars.map((id) => (
-          <span key={id}>{id}, </span>
-        ))}
-      </p>
       <Score currentScore={currentScore} highScore={highScore} />
       <Message gameState={gameState} />
       <Grid handleCardClick={handleCardClick} charList={charList} />
