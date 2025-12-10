@@ -23,7 +23,8 @@ function App() {
           { signal }
         )
         const data = await response.json()
-        setCharList(data.items)
+        const shuffled = shuffleList(data.items)
+        setCharList(shuffled)
       } catch {
         console.log('error')
       }
@@ -32,27 +33,35 @@ function App() {
     // return () => controller.abort()
   }, [])
 
-  useEffect(() => {
-    if (charList.length > 0) {
-      shuffleCards()
+  // function shuffleCards() {
+  //   setCharList((prev) => {
+  //     const shuffled = [...prev]
+
+  //     for (let i = shuffled.length - 1; i > 0; i--) {
+  //       // Generate a random index from 0 to i
+  //       const j = Math.floor(Math.random() * (i + 1));
+
+  //       // Swap elements array[i] and array[j]
+  //       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  //     }
+
+  //     return shuffled
+  //   })
+  // }
+
+  function shuffleList(list) {
+    const arr = [...list]
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
-  }, [])
+    return arr
+  }
 
   function shuffleCards() {
     setCharList((prev) => {
-      const shuffled = [...prev]
-
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        // Generate a random index from 0 to i
-        const j = Math.floor(Math.random() * (i + 1));
-
-        // Swap elements array[i] and array[j]
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-      }
-
-      return shuffled
+      shuffleList(prev)
     })
-
   }
 
   function gameOver() {
@@ -60,9 +69,9 @@ function App() {
     if (currentScore > highScore) {
       setHighScore(currentScore)
     }
+    shuffleCards() // shuffle cards
     setCurrentScore(0) // reset score
     setSelectedChars([]) // clear selected chars array
-    shuffleCards(charList) // shuffle cards
     setGameState('GameOver')
   }
 
@@ -70,9 +79,9 @@ function App() {
     // if not selected yet, game keeps going
     if (!selectedChars.includes(char.id)) {
       setGameState('InGame')
+      shuffleCards()
       setSelectedChars((prev) => [...prev, char.id])
       setCurrentScore((prev) => prev + 1)
-      shuffleCards(charList)
     } else {
       gameOver() // reset game
     }
