@@ -11,7 +11,6 @@ function App() {
   const [selectedChars, setSelectedChars] = useState([])
   const [charList, setCharList] = useState([])
   const [gameState, setGameState] = useState('Start') // "Start", "InGame", "GameOver"
-  const [message, setMessage] = useState('')
 
   useEffect(() => {
     const controller = new AbortController()
@@ -52,13 +51,13 @@ function App() {
     setCurrentScore(0) // reset score
     setSelectedChars([]) // clear selected chars array
     shuffleCards(charList) // shuffle cards
-    setGameState("GameOver")
+    setGameState('GameOver')
   }
 
   function handleCardClick(char) {
     // if not selected yet, game keeps going
     if (!selectedChars.includes(char.id)) {
-      setGameState("InGame")
+      setGameState('InGame')
       setSelectedChars((prev) => [...prev, char.id])
       setCurrentScore((prev) => prev + 1)
       shuffleCards(charList)
@@ -77,7 +76,7 @@ function App() {
         ))}
       </p>
       <Score currentScore={currentScore} highScore={highScore} />
-      <Message message={message} setMessage={setMessage} gameState={gameState} />
+      <Message gameState={gameState} />
       <Grid handleCardClick={handleCardClick} charList={charList} />
     </div>
   )

@@ -1,13 +1,22 @@
 import '../styles/Message.css'
 
-export default function Message({ message, setMessage, gameState }) {
-  if (gameState === "Start") {
-    setMessage("Click a card to begin. Don't pick the same character twice!")
-  } else if (gameState === "InGame") {
-    setMessage("Keep going! Choose a new character — no repeats.")
-  } else if (gameState === "GameOver") {
-    setMessage("<h3>Game Over!</h3> You picked the same character twice. Click any card to try again.")
+export default function Message({ gameState }) {
+  let content
+
+  if (gameState === 'Start') {
+    content = <p>Click a card to begin. Don't pick the same character twice!</p>
+  } else if (gameState === 'InGame') {
+    content = <p>Keep going! Choose a new character — no repeats.</p>
+  } else if (gameState === 'GameOver') {
+    content = (
+      <p>
+        <b>Game Over!</b>{' '}
+        <span>
+          You picked the same character twice. Click any card to try again.
+        </span>
+      </p>
+    )
   }
 
-  return <div className="message">{message}</div>
+  return <div className="message">{content}</div>
 }
