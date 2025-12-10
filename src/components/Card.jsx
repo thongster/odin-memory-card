@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/Card.css'
 
-export default function Card({ setCurrentScore, setHighScore, setSelectedChars }) {
+export default function Card({ setCurrentScore, setHighScore, selectedChars, setSelectedChars }) {
   const [charList, setCharList] = useState([])
 
   useEffect(() => {
@@ -28,7 +28,9 @@ export default function Card({ setCurrentScore, setHighScore, setSelectedChars }
 
   function handleClick(char) {
     setSelectedChars((prev) => [...prev, char.id])
-    setCurrentScore((prev) => prev + 1)
+    if (selectedChars.includes(char.id)) {
+      setCurrentScore((prev) => prev + 1)
+    } 
 
   }
 

@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="container">
-      <p>{selectedChars.map(id => <span>{id}, </span>)}</p>
+      <p>{selectedChars.map(id => <span key={id}>{id}, </span>)}</p>
       <Score currentScore={currentScore} highScore={highScore} />
-      <Grid setCurrentScore={setCurrentScore} setHighScore={setHighScore} setSelectedChars={setSelectedChars} />
+      <Grid setCurrentScore={setCurrentScore} setHighScore={setHighScore} selectedChars={selectedChars} setSelectedChars={setSelectedChars} />
     </div>
   )
 }
