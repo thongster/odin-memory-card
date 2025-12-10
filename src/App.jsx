@@ -59,9 +59,9 @@ function App() {
   }
 
   function shuffleCards() {
-    setCharList((prev) => {
+    setCharList((prev) => (
       shuffleList(prev)
-    })
+    ))
   }
 
   function gameOver() {
