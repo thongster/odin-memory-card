@@ -10,9 +10,12 @@ function App() {
   const [selectedChars, setSelectedChars] = useState([])
 
   function gameOver() {
-    // reset score
-    // set high score
-    // clear selected chars array
+    // set high score only if current score is higher
+    if (currentScore > highScore) {
+      setHighScore(currentScore)
+    }
+    setCurrentScore(0) // reset score
+    setSelectedChars([]) // clear selected chars array
     // shuffle cards
   }
 
@@ -22,13 +25,7 @@ function App() {
       setSelectedChars((prev) => [...prev, char.id])
       setCurrentScore((prev) => prev + 1)
     } else {
-      if (currentScore > highScore) {
-        setHighScore(currentScore)
-      }
-      setSelectedChars([])
-      setCurrentScore(0)
-      
-      // implement game over function
+      gameOver() // reset game
     }
   }
 
