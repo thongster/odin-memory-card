@@ -1,16 +1,13 @@
-# React + Vite
+Project: Memory Card from The Odin Project's React Course
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I turned themed this project to be a Dragonball Ball memory card game using the the Dragonball API here: https://web.dragonball-api.com/documentation
 
-Currently, two official plugins are available:
+My second React project ever after learning useEffect, and it was another challenging project as I'm getting used to "thinking in React".
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The logic of the game is actually quite easy, but it's working with React and states which I am not used to yet. Most of the logic I figured out without a problem - fetching data, storing the info, displaying cards, tracking score, etc. For the shuffle function, I found a Fisher-Yates shuffle function I found online, so that helped a lot.
 
-## React Compiler
+My main challenge was working with React "purity", sticking to React immutability, and making sure my logic ran AFTER render using useEffect. It took a while, but eventually it clicked: React re-renders based entirely on state changes, so if I want the UI to update, I need to treat state as immutable and always give React a brand-new value.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Particularly for shuffling the cards, it wasn't the logic that was difficult, but I ran in circles trying to figure out where and how to save the information and where to call the shuffle functions. I ran into infinite loops trying to run the shuffle function ON MOUNT, whereas shuffle on click was simple.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+A fun little game and some good React practice. I think I'll need more practice though...
