@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Message from './components/Message.jsx'
 import Grid from './components/Grid.jsx'
 import Score from './components/Score.jsx'
 import './styles/modern-normalize.css'
@@ -9,6 +10,7 @@ function App() {
   const [highScore, setHighScore] = useState(0)
   const [selectedChars, setSelectedChars] = useState([])
   const [charList, setCharList] = useState([])
+  const [message, setMessage] = useState('') // start, during game, game over
 
   useEffect(() => {
     const controller = new AbortController()
@@ -34,11 +36,11 @@ function App() {
   function shuffleCards(charList) {
     for (let i = charList.length - 1; i > 0; i--) {
       // Generate a random index from 0 to i
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1))
 
       // Swap elements array[i] and array[j]
-      [charList[i], charList[j]] = [charList[j], charList[i]];
-    }   
+      ;[charList[i], charList[j]] = [charList[j], charList[i]]
+    }
   }
 
   function gameOver() {
@@ -48,7 +50,7 @@ function App() {
     }
     setCurrentScore(0) // reset score
     setSelectedChars([]) // clear selected chars array
-    // shuffle cards
+    shuffleCards(charList) // shuffle cards
   }
 
   function handleCardClick(char) {
@@ -56,14 +58,22 @@ function App() {
     if (!selectedChars.includes(char.id)) {
       setSelectedChars((prev) => [...prev, char.id])
       setCurrentScore((prev) => prev + 1)
+      shuffleCards(charList)
     } else {
       gameOver() // reset game
     }
   }
 
+  shuffleCards(charList) // initial shuffle
+
   return (
     <div className="container">
-      <p>{selectedChars.map(id => <span key={id}>{id}, </span>)}</p>
+      <p>
+        {selectedChars.map((id) => (
+          <span key={id}>{id}, </span>
+        ))}
+      </p>
+      <Message message={message} />
       <Score currentScore={currentScore} highScore={highScore} />
       <Grid handleCardClick={handleCardClick} charList={charList} />
     </div>
