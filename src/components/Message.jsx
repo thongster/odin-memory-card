@@ -14,10 +14,12 @@ export default function Message({ gameState }) {
       <p>
         <b>Game Over!</b>{' '}
         <span>
-          You picked the same character twice. Click any card to try again.
+          You picked the same character twice. Try again.
         </span>
       </p>
     )
+  } else if (gameState === 'Win') {
+    content = <p><b>You win!</b> Play again.</p>
   }
 
   return <div className="message">{content}</div>

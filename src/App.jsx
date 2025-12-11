@@ -10,7 +10,7 @@ function App() {
   const [highScore, setHighScore] = useState(0)
   const [selectedChars, setSelectedChars] = useState([])
   const [charList, setCharList] = useState([])
-  const [gameState, setGameState] = useState('Start') // "Start", "InGame", "GameOver"
+  const [gameState, setGameState] = useState('Start') // "Start", "InGame", "GameOver", "Win"
 
   function shuffleList(list) {
     const arr = [...list]
@@ -54,20 +54,30 @@ function App() {
     shuffleCards() // shuffle cards
     setCurrentScore(0) // reset score
     setSelectedChars([]) // clear selected chars array
-    setGameState('GameOver')
+  }
+
+  function checkWin(score) {
+    if (score + 1 === 10) {
+      setGameState('Win')
+    } else {
+      setGameState('InGame')
+    }
   }
 
   function handleCardClick(char) {
     // if not selected yet, game keeps going
     if (!selectedChars.includes(char.id)) {
-      setGameState('InGame')
       shuffleCards()
       setSelectedChars((prev) => [...prev, char.id])
       setCurrentScore((prev) => prev + 1)
+      checkWin(currentScore)
     } else {
+      setGameState('GameOver')
       gameOver() // reset game
     }
   }
+
+
 
   return (
     <div className="container">
