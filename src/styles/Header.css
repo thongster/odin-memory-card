@@ -1,0 +1,17 @@
+.header {
+  text-align: center;
+  padding: 1rem 0;
+  border: 3px solid #f0b429;
+
+  background: linear-gradient(to bottom, #fff7d1, #ffe08a);
+  box-shadow: 0 4px 10px rgba(255, 200, 60, 0.4);
+
+  color: #d35400;
+  text-shadow: 0 2px 4px rgba(255, 180, 0, 0.5);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}

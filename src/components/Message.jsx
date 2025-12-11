@@ -13,13 +13,15 @@ export default function Message({ gameState }) {
     content = (
       <p>
         <b>Game Over!</b>{' '}
-        <span>
-          You picked the same character twice. Try again.
-        </span>
+        <span>You picked the same character twice. Try again.</span>
       </p>
     )
   } else if (gameState === 'Win') {
-    content = <p><b>You win!</b> Play again.</p>
+    content = (
+      <p>
+        <b>You win!</b> Play again.
+      </p>
+    )
   }
 
   return <div className="message">{content}</div>
