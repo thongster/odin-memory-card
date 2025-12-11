@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Header from './components/Header.jsx'
 import Message from './components/Message.jsx'
 import Grid from './components/Grid.jsx'
 import Score from './components/Score.jsx'
@@ -77,10 +78,9 @@ function App() {
     }
   }
 
-
-
   return (
     <div className="container">
+      <Header />
       <Score currentScore={currentScore} highScore={highScore} />
       <Message gameState={gameState} />
       <Grid handleCardClick={handleCardClick} charList={charList} />
