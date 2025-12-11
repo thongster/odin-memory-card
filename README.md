@@ -1,5 +1,7 @@
 Project: Memory Card from The Odin Project's React Course
 
+Live: https://odin-memory-card-nu.vercel.app/
+
 I turned themed this project to be a Dragonball Ball memory card game using the the Dragonball API here: https://web.dragonball-api.com/documentation
 
 My second React project ever after learning useEffect, and it was another challenging project as I'm getting used to "thinking in React".
